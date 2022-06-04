@@ -16,6 +16,10 @@ class Product(db.Model):
 	price       = db.Column(db.Integer, unique=False)
 	description = db.Column(db.String(200), unique=True)
 
+	def _repr_(self):
+		return {
+			"success": "Product added successfully"
+		}
 
 class Home(Resource):
 
@@ -24,15 +28,25 @@ class Home(Resource):
 		products_list = []
 		for product in products:
 			_product = {
+				'id': product.id,
 				'name': product.name,
 				'price': product.price,
-				'id': product.id,
 				'desc': product.description
 			}
 			products_list.append(_product)
 		return  products_list
 
+	def post(self):
+		request_data = request.get_json()
+		new_product = Product(
+			name=request_data['name'], 
+			price=request_data['price'], 
+			description=request_data['description'])
+		db.session.add(new_product)
+		return db.session.commit()
 
+
+	
 
 api.add_resource(Home, '/')
 
