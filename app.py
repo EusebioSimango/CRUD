@@ -41,7 +41,8 @@ class Home(Resource):
 		new_product = Product(
 			name=request_data['name'], 
 			price=request_data['price'], 
-			description=request_data['description'])
+			description=request_data['description']
+		)
 		db.session.add(new_product)
 		return db.session.commit()
 
