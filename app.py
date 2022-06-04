@@ -1,4 +1,4 @@
-from flask import Flask , request, jsonify
+from flask import Flask , request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api, reqparse
 # from flask_cors import CORS #install the package
@@ -10,6 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///priducts.db'
 db  = SQLAlchemy(app)
 # CORS(app)
 
+global_products_list = []
 class Product(db.Model):
 	id          = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
 	name        = db.Column(db.String(200), unique=True)
@@ -24,8 +25,9 @@ class Product(db.Model):
 class API(Resource):
 
 	def get(self):
-		products = Product.query.all()
 		products_list = []
+		global_products_list
+		products = Product.query.all()
 		for product in products:
 			_product = {
 				'id': product.id,
@@ -34,6 +36,7 @@ class API(Resource):
 				'description': product.description
 			}
 			products_list.append(_product)
+			global_products_list.append(_product)
 		return  products_list
 
 	def post(self):
@@ -51,6 +54,21 @@ class API(Resource):
 
 api.add_resource(API, '/api')
 
+#Front-End Routes
+@app.route("/")
+def index():
+	products_list = []
+	products = Product.query.all()
+	for product in products:
+		_product = {
+			'id': product.id,
+			'name': product.name,
+			'price': product.price,
+			'description': product.description
+		}
+
+		products_list.append(_product)
+	return render_template("index.html", products=products_list)
 
 if __name__=='__main__':
 	app.run(debug=True)

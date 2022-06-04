@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="author" content="Eusebio Simango">
 	<title>ESimas VShop</title>
-	<link rel="stylesheet" href="src/style.css">
+	<link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 	<header>
@@ -23,12 +23,20 @@
 
 	<section class="container c-products">
 		<div id="products">
-			<div class="product">
+			{% for product in products %}
+				<div class="product">
 				<img src="" alt="Product 1">
-				<p class="product_name">Mouse RGB</p>
-				<p class="price">15000 Mzn</p>
-				<p class="desctiption">Com MousePad</p>
-			</div>	
+				<p class="product_name">
+					{{ product.name }}
+				</p>
+				<p class="price">
+					{{ product.price }}
+				</p>
+				<p class="desctiption">
+					{{ product.description }}
+				</p>
+			</div>
+			{% endfor %}
 		</div>
 	</section>
 </body>
