@@ -31,7 +31,7 @@ class Home(Resource):
 				'id': product.id,
 				'name': product.name,
 				'price': product.price,
-				'desc': product.description
+				'description': product.description
 			}
 			products_list.append(_product)
 		return  products_list
