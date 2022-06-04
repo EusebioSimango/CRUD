@@ -25,7 +25,15 @@
 		<div id="products">
 			{% for product in products %}
 				<div class="product">
-					<span class="options">...</span>
+					<span class="options">
+						<span class="btn-modal">...</span>
+						<div class="modal-options">
+							<ul data-id="{{ product.id }}">
+								<li class="buy">Comprar</li>
+								<li class="edit">Editar (Admin)</li>
+							</ul>
+						</div>
+					</span>
 					<img src="" alt="{{ product.name }}">
 					<p class="product_name">
 						{{ product.name }}
@@ -40,5 +48,7 @@
 			{% endfor %}
 		</div>
 	</section>
+
+	<script type="text/javascript" src="static/app.js"></script>
 </body>
 </html>

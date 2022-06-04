@@ -80,6 +80,7 @@ header > div > nav > ul > li > a:hover {
 	width: 225.3px;
 	border-radius: 10px;
 	padding: 25px;
+	overflow: hidden;
 }
 
 .product > 	img {
@@ -94,6 +95,37 @@ header > div > nav > ul > li > a:hover {
 	display: block;
 	line-height: 30px;
 }
+
+.options {
+	font-weight: bolder;
+	position: relative;
+	left: 160px;
+	bottom: 10px;
+	cursor: pointer;
+}
+
+.modal-options {
+	display: none;
+	position: absolute;
+	right: -2px;
+	background-color: #ccc;
+	cursor: default;
+	padding: 5px;
+}
+
+.active-modal {
+	display: block;
+}
+
+.modal-options > ul > li {
+	cursor: pointer;
+	font-size: 10px;
+	margin: 5px;
+	padding: 5px;
+	background-color: #f7f7f7;
+
+}
+
 
 @media (max-width: 699px) {
 	.container {
