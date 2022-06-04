@@ -21,7 +21,7 @@ class Product(db.Model):
 			"success": "Product added successfully"
 		}
 
-class Home(Resource):
+class API(Resource):
 
 	def get(self):
 		products = Product.query.all()
@@ -49,7 +49,8 @@ class Home(Resource):
 
 	
 
-api.add_resource(Home, '/')
+api.add_resource(API, '/api')
+
 
 if __name__=='__main__':
 	app.run(debug=True)
