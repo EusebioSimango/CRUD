@@ -1,7 +1,8 @@
-from flask import Flask , request, render_template, session
+from flask import Flask , request, render_template, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS 
+from flask_session import Session
 import json
 
 app = Flask(__name__)
@@ -9,6 +10,10 @@ api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 db  = SQLAlchemy(app)
 CORS(app)
+
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_TYPE'] = "filesystem"
+Session(app)
 
 global_products_list = []
 class Product(db.Model):
@@ -86,10 +91,20 @@ def delete():
 	id = request.args.get('id')
 	product =  Product.query.get(id)
 
+@app.route('/admin/login', methods=["GET", "POST"])
+def admin_login():
+	if request.method == 'POST':
+		session["admin"] == request.form.get("name")
+		return redirect("/admin")
+
+	return render_template("login.html")
+
 @app.route('/admin')
 def admin():
+	if not session.get("admin"):
+		return redirect("/admin/login")
 
-
+	return render_template("admin.html")
 if __name__=='__main__':
 	app.run(debug=True)
 

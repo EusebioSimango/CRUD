@@ -1,0 +1,29 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+h2 {
+	color: deepskyblue;
+	margin-bottom: 5px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background-color: #333;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+#name, #password {
+	outline-offset: 2px;
+	border: none;
+	outline-color: #fff;
+	height: 30px;
+	padding: 5px;
+	border-radius: 6px;
+}
