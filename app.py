@@ -1,14 +1,14 @@
-from flask import Flask , request, jsonify, render_template
+from flask import Flask , request, render_template, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api, reqparse
-# from flask_cors import CORS #install the package
+from flask_cors import CORS 
 import json
 
 app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 db  = SQLAlchemy(app)
-# CORS(app)
+CORS(app)
 
 global_products_list = []
 class Product(db.Model):
@@ -86,6 +86,10 @@ def delete():
 	id = request.args.get('id')
 	product =  Product.query.get(id)
 
+@app.route('/admin')
+def admin():
+
 
 if __name__=='__main__':
 	app.run(debug=True)
+
