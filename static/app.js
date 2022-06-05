@@ -1,7 +1,8 @@
 const arr = document.getElementsByClassName('options')
 
 const editProduct = (id) => {
-	javascript.history(`/edit?id=${id}`)
+	console.log('redirecting')
+	javascript.history.go(`/edit?id=${id}`)
 }
 
 
@@ -18,7 +19,7 @@ const handleClick = (event) => {
 
 		switch (targetEl) {
 			case 'edit':
-				// editProduct(id)
+				editProduct(id)
 				console.log('editing')
 				break;
 			case 'buy':
