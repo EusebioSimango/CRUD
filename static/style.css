@@ -126,6 +126,9 @@ header > div > nav > ul > li > a:hover {
 
 }
 
+.modal-options a {
+	color: #000;
+}
 
 @media (max-width: 699px) {
 	.container {

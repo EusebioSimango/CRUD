@@ -2,7 +2,7 @@ const arr = document.getElementsByClassName('options')
 
 const editProduct = (id) => {
 	console.log('redirecting')
-	javascript.history.go(`/edit?id=${id}`)
+	window.location.href = `/edit?id=${id}`
 }
 
 

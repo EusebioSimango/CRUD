@@ -6,13 +6,14 @@ import json
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///priducts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 db  = SQLAlchemy(app)
 # CORS(app)
 
 global_products_list = []
 class Product(db.Model):
 	id          = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
+	photo_url   = db.Column(db.String, unique=True)
 	name        = db.Column(db.String(200), unique=True)
 	price       = db.Column(db.Integer, unique=False)
 	description = db.Column(db.String(200), unique=True)
@@ -32,6 +33,7 @@ class API(Resource):
 			_product = {
 				'id': product.id,
 				'name': product.name,
+				'photo_url': product.photo_url,
 				'price': product.price,
 				'description': product.description
 			}
@@ -42,6 +44,7 @@ class API(Resource):
 	def post(self):
 		request_data = request.get_json()
 		new_product = Product(
+			photo_url=request_data['photo_url'],
 			name=request_data['name'], 
 			price=request_data['price'], 
 			description=request_data['description']
@@ -62,6 +65,7 @@ def index():
 	for product in products:
 		_product = {
 			'id': product.id,
+			'photo_url': product.photo_url,
 			'name': product.name,
 			'price': product.price,
 			'description': product.description
@@ -75,7 +79,13 @@ def edit():
 	id = request.args.get("id")
 	product  = Product.query.get(id)
 	print()
-	return { 'editing': str(product) }, 200
+	return render_template("edit.html")
+
+@app.route('/remove')
+def delete():
+	id = request.args.get('id')
+	product =  Product.query.get(id)
+
 
 if __name__=='__main__':
 	app.run(debug=True)
