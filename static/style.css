@@ -130,6 +130,14 @@ header > div > nav > ul > li > a:hover {
 	color: #000;
 }
 
+/* UPDATE  */
+.update_product {
+	display: flex;
+	flex-direction: column-reverse;
+	width: 700px;
+}
+
+
 @media (max-width: 699px) {
 	.container {
 		width: 100%;
