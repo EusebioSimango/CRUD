@@ -78,7 +78,7 @@ def index():
 def edit():
 	id = request.args.get("id")
 	product  = Product.query.get(id)
-	print()
+	print(str(product.description))
 	return render_template("edit.html", product=product)
 
 @app.route('/remove')

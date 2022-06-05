@@ -5,11 +5,11 @@
 		<form action="/" method="get" class="update_product" accept-charset="utf-8">
 			<div>
 				<label>Name:</label>
-				<input type="text" name="product_name">
+				<input type="text" value="{{ product.name }}" name="product_name">
 			</div>
 			<div>
 				<label>Price:</label>
-				<input type="number" name="product_price">		
+				<input type="number" value="{{ product.price }}" name="product_price">		
 			</div>
 			<div>
 				<label>Photo url:</label>
@@ -17,7 +17,7 @@
 			</div>
 			<div>
 				<label>Description</label>
-				<textarea name="product_description"></textarea>		
+				<textarea name="product_description">{{ product.description }}</textarea>		
 			</div>
 		</form>
 
