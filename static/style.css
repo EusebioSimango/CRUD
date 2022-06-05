@@ -132,9 +132,19 @@ header > div > nav > ul > li > a:hover {
 
 /* UPDATE  */
 .update_product {
+	padding-top: 60px;
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	width: 700px;
+	gap: 20px;
+}
+
+.update_product input {
+	height: 30px;
+	border: none;
+	border-radius: 6px;
+	outline-offset: 3px;
+	outline-color: #fff;
 }
 
 
