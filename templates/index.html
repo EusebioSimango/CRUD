@@ -11,7 +11,9 @@
 						<div class="modal-options">
 							<ul data-id="{{ product.id }}" data-name="{{ product.name }}">
 								<li class="buy">Comprar</li>
+								{% if session["name"] %}
 								<li class="edit">Editar (Admin)</li>
+								{% endif %}
 							</ul>
 						</div>
 					</span>

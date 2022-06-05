@@ -94,7 +94,8 @@ def delete():
 @app.route('/admin/login', methods=["GET", "POST"])
 def admin_login():
 	if request.method == 'POST':
-		session["admin"] == request.form.get("name")
+		
+		session["name"] == request.form.get("name")
 		return redirect("/admin")
 
 	return render_template("login.html")
