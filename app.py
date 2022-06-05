@@ -28,6 +28,11 @@ class Product(db.Model):
 			"success": "Product added successfully"
 		}
 
+class Admin(db.Model):
+	id       = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
+	name     = db.Column(db.String, unique=True)
+	password = db.Column(db.String, unique=True)
+
 class API(Resource):
 
 	def get(self):
@@ -94,15 +99,20 @@ def delete():
 @app.route('/admin/login', methods=["GET", "POST"])
 def admin_login():
 	if request.method == 'POST':
-		
-		session["name"] == request.form.get("name")
-		return redirect("/admin")
+		name     = request.form.get("name")
+		password = request.form.get("password")
+		is_admin = Admin.query.filter_by(name=name, password=password).first()
+		print(is_admin)
+		if is_admin:
+			session["name"] = is_admin.name
+			return redirect("/admin")
 
 	return render_template("login.html")
 
+
 @app.route('/admin')
 def admin():
-	if not session.get("admin"):
+	if not session.get("name"):
 		return redirect("/admin/login")
 
 	return render_template("admin.html")
