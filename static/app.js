@@ -1,5 +1,10 @@
 const arr = document.getElementsByClassName('options')
 
+const editProduct = (id) => {
+	javascript.history(`/edit?id=${id}`)
+}
+
+
 const handleClick = (event) => {
 	const targetEl = event.target.classList[0]
 	console.log(targetEl)

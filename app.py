@@ -70,5 +70,12 @@ def index():
 		products_list.append(_product)
 	return render_template("index.html", products=products_list)
 
+@app.route("/edit")
+def edit():
+	id = request.args.get("id")
+	product  = Product.query.get(id)
+	print()
+	return { 'editing': str(product) }, 200
+
 if __name__=='__main__':
 	app.run(debug=True)
