@@ -1,8 +1,11 @@
 const arr = document.getElementsByClassName('options')
 
-const editProduct = (id) => {
+const editProduct = (id, name) => {
 	console.log('redirecting')
 	window.location.href = `/edit?id=${id}`
+	setTimeout(1000)
+	console.log(name)
+	document.querySelector('.editing').innerText = `Editing ${name}`
 }
 
 
@@ -15,11 +18,12 @@ const handleClick = (event) => {
 
 	if (targetEl === 'edit' || targetEl === 'buy') {
 		const id = event.target.parentElement.getAttribute("data-id")
+		const name = event.target.parentElement.getAttribute("data-name")
 		console.log(id)
 
 		switch (targetEl) {
 			case 'edit':
-				editProduct(id)
+				editProduct(id, name)
 				console.log('editing')
 				break;
 			case 'buy':

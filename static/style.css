@@ -136,15 +136,32 @@ header > div > nav > ul > li > a:hover {
 	display: flex;
 	flex-direction: column;
 	width: 700px;
-	gap: 20px;
 }
 
-.update_product input {
+.update_product input, .update_product textarea{
 	height: 30px;
 	border: none;
+	margin-bottom: 20px;
 	border-radius: 6px;
 	outline-offset: 3px;
 	outline-color: #fff;
+	width: 60%;
+	padding: 5px;
+}
+
+.update_product label {
+	font-weight: 900;
+	padding-bottom: 2px;
+}
+
+.update_product textarea {
+	resize: none;
+	height: 100px;
+}
+
+.update_product div {
+	display: flex;
+	justify-content: space-between;
 }
 
 
@@ -152,4 +169,9 @@ header > div > nav > ul > li > a:hover {
 	.container {
 		width: 100%;
 	}
+
+	.update_product {
+		width: calc(100% - 20px);
+	}
 }
+

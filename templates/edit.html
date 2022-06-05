@@ -1,12 +1,24 @@
 {% extends "layout.html" %}
 
 {% block body %}
-		
+		<h1 class="editing"></h1>
 		<form action="/" method="get" class="update_product" accept-charset="utf-8">
-			<input type="text" name="product_name">
-			<input type="number" name="product_price">
-			<input type="url" name="product_url">
-			<textarea name="product_description"></textarea>
+			<div>
+				<label>Name:</label>
+				<input type="text" name="product_name">
+			</div>
+			<div>
+				<label>Price:</label>
+				<input type="number" name="product_price">		
+			</div>
+			<div>
+				<label>Photo url:</label>
+				<input type="url" value="{{ product.photo_url }}" name="product_url">
+			</div>
+			<div>
+				<label>Description</label>
+				<textarea name="product_description"></textarea>		
+			</div>
 		</form>
 
 {% endblock %}

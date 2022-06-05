@@ -79,7 +79,7 @@ def edit():
 	id = request.args.get("id")
 	product  = Product.query.get(id)
 	print()
-	return render_template("edit.html")
+	return render_template("edit.html", product=product)
 
 @app.route('/remove')
 def delete():
