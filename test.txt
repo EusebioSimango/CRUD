@@ -1,0 +1,12 @@
+var = Model(a='a')
+db.add(var) db.session.commit()
+ 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///questions'
+
+admin = User.query.filter_by(username='admin').first()
+admin.email = 'my_new_email@example.com'
+db.session.commit()
+
+user = User.query.get(5)
+user.name = 'New Name'
+db.session.commit()
