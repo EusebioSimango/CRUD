@@ -6,7 +6,7 @@ npm-debug.log*
 # Personal
 test
 plugins
-app.js
+*.js
 
 # Runtime data
 pids
